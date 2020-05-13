@@ -7,31 +7,20 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/link'
 
 
 
 const useStyles = makeStyles((theme) => ({
-     icon: {
-          marginRight: theme.spacing(2),
-     },
-     heroContent: {
-          backgroundColor: theme.palette.background.paper,
-          padding: theme.spacing(8, 0, 6),
-     },
-     heroButtons: {
-          marginTop: theme.spacing(4),
-     },
-     cardGrid: {
-          paddingTop: theme.spacing(8),
-          paddingBottom: theme.spacing(8),
-     },
      card: {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center'
      },
      cardMedia: {
-          paddingTop: '56.25%', // 16:9
+          padding: '56.25%',
+          margin: '2%', // 16:9
      },
      cardContent: {
           flexGrow: 1,
@@ -62,18 +51,27 @@ const Team = (props) => {
                          <Typography gutterBottom variant="h5" component="h2">
                               {team.strTeam}
                     </Typography>
+                    <Typography>
+                             Established: {team.intFormedYear}
+                    </Typography>
                          <Typography>
-                              This is a media card. You can use this section to describe the content.
+                              Home Stadium: {team.strStadium}
+                    </Typography>
+                    <Typography>
+                         Website: <Link href={team.strWebsite}>{team.strWebsite}</Link>
+                    </Typography>
+                    <Typography>
+                         <a href={team.strTwitter}>{team.strTwitter}</a>
                     </Typography>
                     </CardContent>
-                    <CardActions>
+                    {/* <CardActions>
                          <Button size="small" color="primary">
                               View
                     </Button>
                          <Button size="small" color="primary">
                               Edit
                     </Button>
-                    </CardActions>
+                    </CardActions> */}
                </Card>
           </Grid>
 

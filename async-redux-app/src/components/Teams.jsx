@@ -3,6 +3,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Team from './Team'
 
@@ -41,6 +42,13 @@ const useStyles = makeStyles((theme) => ({
           backgroundColor: theme.palette.background.paper,
           padding: theme.spacing(6),
      },
+     root: {
+          display: 'flex',
+          justifyContent: 'center',
+          '& > * + *': {
+               marginLeft: theme.spacing(2),
+          },
+     },
 }));
 
 
@@ -49,7 +57,7 @@ const Teams = ({
      isFetching,
      teams,
      fetchTeamData,
-     error,    
+     error,
 }) => {
      useEffect(() => {
           fetchTeamData()
@@ -60,6 +68,12 @@ const Teams = ({
 
      return (
           <Container className={classes.cardGrid} maxWidth="md">
+               {
+                    isFetching && 
+                    <div className={classes.root}>
+                         <CircularProgress color="secondary" />
+                    </div>
+               }
                <Grid container spacing={4}>
                     {teams.map((team) => (
                          <Team team={team} key={team.idTeam} />
