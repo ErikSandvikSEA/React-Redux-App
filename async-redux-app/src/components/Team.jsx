@@ -7,7 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/link'
 
 
 
@@ -58,7 +57,7 @@ const Team = (props) => {
                               Home Stadium: {team.strStadium}
                     </Typography>
                     <Typography>
-                         Website: <Link href={team.strWebsite}>{team.strWebsite}</Link>
+                         Website: <a href={team.strWebsite}>{team.strWebsite}</a>
                     </Typography>
                     <Typography>
                          <a href={team.strTwitter}>{team.strTwitter}</a>
