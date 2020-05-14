@@ -10,7 +10,6 @@ const initialState = {
   isFetching: false,
   teams: [],
   error: '',
-  blurb: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -24,7 +23,7 @@ export const reducer = (state = initialState, action) => {
           return {
                ...state,
                isFetching: false,
-               teams: action.payload
+               teams: action.payload,
           }
      case FETCH_TEAM_DATA_FAILURE:
           return {
@@ -32,10 +31,10 @@ export const reducer = (state = initialState, action) => {
                isFetching: false,
                error: `There has been an Error`
           }
-     case TOGGLE_BLURB:
+     case TOGGLE_BLURB:     
           return {
                ...state,
-               blurb: !state.blurb
+               teams: [...state.teams.map(team => team.idTeam === action.payload ? {...team, blurb: !team.blurb } : team)]
           }
     default:
       return state;

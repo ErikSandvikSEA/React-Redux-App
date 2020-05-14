@@ -12,6 +12,10 @@ export const fetchTeamData = () => {
                .get(`https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League`)
                .then(res => {
                     console.log(res.data)
+
+                    res.data.teams.forEach((team) => {
+                         team.blurb = false
+                    })
                     dispatch({type: FETCH_TEAM_DATA_SUCCESS, payload: res.data.teams})
                })
                .catch(err => {
@@ -21,6 +25,6 @@ export const fetchTeamData = () => {
      }
 }
 
-export const toggleBlurb = (team) => {
-     return { type: TOGGLE_BLURB, payload: team }
+export const toggleBlurb = (idTeam) => {
+     return { type: TOGGLE_BLURB, payload: idTeam }
 }

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import Button from '@material-ui/core/Button';
+import React from 'react';
+// import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -39,12 +39,6 @@ const Team = ({
 }) => {
      const classes = useStyles();
      
-
-     // useEffect(() => {
-     //      toggleBlurb()
-     // }, [toggleBlurb])
-
-
      return (
 
           <Grid item key={team} xs={12} sm={6} md={4}>
@@ -65,7 +59,7 @@ const Team = ({
                               Home Stadium: {team.strStadium}
                     </Typography>
                     <Typography>
-                         Website: <a href={team.strWebsite}>{team.strWebsite}</a>
+                         Website: <a href={team.strWebsite} target='_blank'>{team.strWebsite}</a>
                     </Typography>
                     <a href={team.strTwitter}>
                     <Typography>
@@ -73,17 +67,20 @@ const Team = ({
                     </Typography>
                     </a>
                     {
-                         blurb &&
+                         team.blurb &&
                          <Typography>
                               {team.strDescriptionEN}
                          </Typography>
                     }
                     </CardContent>
+                    <div>
                     <CardActions>
-                         <Button onClick={toggleBlurb} size="small" color="secondary" variant="contained">
+                         <button id={team.idTeam} onClick={(e) => toggleBlurb(e.target.id)} 
+                         >
                               Team Description
-                    </Button>
+                    </button>
                     </CardActions>
+                    </div>
                </Card>
           </Grid>
 
