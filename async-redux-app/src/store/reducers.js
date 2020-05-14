@@ -1,14 +1,16 @@
 import {
      FETCH_TEAM_DATA_START, 
      FETCH_TEAM_DATA_SUCCESS, 
-     FETCH_TEAM_DATA_FAILURE
+     FETCH_TEAM_DATA_FAILURE,
+     TOGGLE_BLURB
 } from '../store/actions'
 
 
 const initialState = {
   isFetching: false,
   teams: [],
-  error: ''
+  error: '',
+  blurb: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -29,6 +31,11 @@ export const reducer = (state = initialState, action) => {
                ...state,
                isFetching: false,
                error: `There has been an Error`
+          }
+     case TOGGLE_BLURB:
+          return {
+               ...state,
+               blurb: !state.blurb
           }
     default:
       return state;

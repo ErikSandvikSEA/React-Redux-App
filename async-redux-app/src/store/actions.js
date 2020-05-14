@@ -3,6 +3,7 @@ import axios from 'axios'
 export const FETCH_TEAM_DATA_START = 'FETCH_TEAM_DATA_START'
 export const FETCH_TEAM_DATA_SUCCESS = 'FETCH_TEAM_DATA_SUCCESS'
 export const FETCH_TEAM_DATA_FAILURE = 'FETCH_TEAM_DATA_FAILURE'
+export const TOGGLE_BLURB = 'TOGGLE_BLURB'
 
 export const fetchTeamData = () => {
      return dispatch => {
@@ -18,4 +19,8 @@ export const fetchTeamData = () => {
                     // dispatch({type: FETCH_TEAM_DATA_FAILURE})
                })
      }
+}
+
+export const toggleBlurb = (team) => {
+     return { type: TOGGLE_BLURB, payload: team }
 }

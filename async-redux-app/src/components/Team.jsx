@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { connect } from 'react-redux'
+import { toggleBlurb } from '../store/actions'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,11 +32,17 @@ const useStyles = makeStyles((theme) => ({
      },
 }));
 
-const Team = (props) => {
+const Team = ({
+     team,
+     blurb,
+     toggleBlurb
+}) => {
      const classes = useStyles();
-     const {
-          team
-     } = props
+     
+
+     // useEffect(() => {
+     //      toggleBlurb()
+     // }, [toggleBlurb])
 
 
      return (
@@ -59,22 +67,36 @@ const Team = (props) => {
                     <Typography>
                          Website: <a href={team.strWebsite}>{team.strWebsite}</a>
                     </Typography>
+                    <a href={team.strTwitter}>
                     <Typography>
-                         <a href={team.strTwitter}>{team.strTwitter}</a>
+                         {team.strTwitter}
                     </Typography>
+                    </a>
+                    {
+                         blurb &&
+                         <Typography>
+                              {team.strDescriptionEN}
+                         </Typography>
+                    }
                     </CardContent>
-                    {/* <CardActions>
-                         <Button size="small" color="primary">
-                              View
+                    <CardActions>
+                         <Button onClick={toggleBlurb} size="small" color="secondary" variant="contained">
+                              Team Description
                     </Button>
-                         <Button size="small" color="primary">
-                              Edit
-                    </Button>
-                    </CardActions> */}
+                    </CardActions>
                </Card>
           </Grid>
 
      )
 }
 
-export default Team
+const mapStateToProps = state => {
+     return {
+          blurb: state.blurb
+     }
+}
+
+export default connect(
+     mapStateToProps,
+     {toggleBlurb}
+)(Team)

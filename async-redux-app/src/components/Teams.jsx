@@ -88,7 +88,7 @@ const mapStateToProps = state => {
      return {
           isFetching: state.isFetching,
           teams: state.teams,
-          error: state.error
+          error: state.error,
      }
 }
 
