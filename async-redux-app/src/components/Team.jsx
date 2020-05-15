@@ -1,5 +1,5 @@
 import React from 'react';
-// import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -75,10 +75,10 @@ const Team = ({
                     </CardContent>
                     <div>
                     <CardActions>
-                         <button id={team.idTeam} onClick={(e) => toggleBlurb(e.target.id)} 
+                         <Button variant="contained" color='secondary' id={team.idTeam} onClick={() => toggleBlurb(team.idTeam)} 
                          >
                               Team Description
-                    </button>
+                    </Button>
                     </CardActions>
                     </div>
                </Card>
